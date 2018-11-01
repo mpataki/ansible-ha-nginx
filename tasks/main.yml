@@ -34,7 +34,7 @@
 
 - name: cast_stream server
   template:
-    src: roles/nginx/files/cast_stream
+    src: files/cast_stream
     dest: /etc/nginx/sites-enabled/cast_stream
     owner: pi
     group: pi
