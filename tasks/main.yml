@@ -1,0 +1,43 @@
+---
+
+- name: nginx package
+  apt:
+    name: nginx
+    state: present
+  become: true
+
+- name: nginx service
+  service:
+    name: nginx
+    enabled: true
+  become: true
+
+- name: nginx config
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+  become: true
+  notify:
+    - restart nginx
+
+- name: homeassistant server
+  template:
+    src: templates/homeassistant
+    dest: /etc/nginx/sites-enabled/homeassistant
+    owner: pi
+    group: pi
+  become: true
+  notify:
+    - restart nginx
+
+- name: cast_stream server
+  template:
+    src: roles/nginx/files/cast_stream
+    dest: /etc/nginx/sites-enabled/cast_stream
+    owner: pi
+    group: pi
+  become: true
+  notify:
+    - restart nginx
