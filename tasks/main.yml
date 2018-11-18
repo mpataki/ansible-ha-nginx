@@ -31,4 +31,3 @@
   become: true
   notify:
     - restart nginx
-
