@@ -32,12 +32,3 @@
   notify:
     - restart nginx
 
-- name: cast_stream server
-  template:
-    src: files/cast_stream
-    dest: /etc/nginx/sites-enabled/cast_stream
-    owner: pi
-    group: pi
-  become: true
-  notify:
-    - restart nginx

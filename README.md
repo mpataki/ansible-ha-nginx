@@ -2,8 +2,6 @@
 
 This ansible role sets up a [nginx](https://www.nginx.com/) server to reverse proxy the home assistant web UI's HTTP and Websocket ports, as well as grafana. It assumes you've set up [let's encrypt](https://github.com/mpataki/ansible-ha-letsencrypt) for SSL encryption and will handle HTTP -> HTTPS redirects.
 
-Additionally, it (soon to be optionally) will setup a server for hosting HLS streams from the Pi, which can be used by streaming devices to display live video feeds (like those produced by projects like [this](https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks), among others).
-
 ## Requirements
 
 Really this should work on any debian based system, but has been tested on a Raspberry Pi running Hassbian.
