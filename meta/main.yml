@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: ha-nginx
+  role_name: ha_nginx
   author: Mat Pataki
   description: 'nginx installation and configuration for home assistant'
   company: 'n/a'
@@ -15,4 +15,4 @@ galaxy_info:
     - homeassistant
 
 dependencies:
-  - mpataki.ha-letsencrypt
+  - mpataki.ha_letsencrypt
