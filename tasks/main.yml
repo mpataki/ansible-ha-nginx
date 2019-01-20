@@ -10,6 +10,9 @@
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
+  become: true
+  notify:
+    - restart nginx
 
 - name: nginx config
   copy:
