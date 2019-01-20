@@ -6,12 +6,6 @@
     state: present
   become: true
 
-- name: nginx service
-  service:
-    name: nginx
-    enabled: true
-  become: true
-
 - name: remove default nginx conf
   file:
     path: /etc/nginx/sites-enabled/default
@@ -36,3 +30,10 @@
   become: true
   notify:
     - restart nginx
+
+- name: nginx service
+  service:
+    name: nginx
+    enabled: true
+    state: started
+  become: true
