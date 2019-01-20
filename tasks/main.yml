@@ -12,6 +12,11 @@
     enabled: true
   become: true
 
+- name: remove default nginx conf
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
 - name: nginx config
   copy:
     src: files/nginx.conf
