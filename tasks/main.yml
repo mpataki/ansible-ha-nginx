@@ -31,8 +31,17 @@
     owner: pi
     group: pi
   become: true
-  notify:
-    - restart nginx
+  notify: restart nginx
+
+- name: add extra servers
+  template:
+    src: templates/proxy
+    dest: "/etc/nginx/sites-enabled/{{ item.subdomain }}"
+    owner: pi
+    group: pi
+  with_items: "{{ proxies }}"
+  become: true
+  notify: restart nginx
 
 - name: nginx service
   service:
