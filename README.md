@@ -1,5 +1,7 @@
 # ansible-ha-nginx
 
+[![Build Status](https://travis-ci.org/mpataki/ansible-ha-nginx.svg?branch=master)](https://travis-ci.org/mpataki/ansible-ha-nginx)
+
 This ansible role sets up a [nginx](https://www.nginx.com/) server to reverse proxy the home assistant web UI's HTTP and Websocket ports. It assumes you've set up [let's encrypt](https://github.com/mpataki/ansible-ha-letsencrypt) for SSL encryption and will handle HTTP -> HTTPS redirects.
 
 ## Requirements
