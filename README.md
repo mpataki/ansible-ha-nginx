@@ -26,7 +26,7 @@ proxies:
     allowed_cidr: 192.168.1.0/24 # optional
 ```
 
-This product a subdomain like grafna.your-home.duckdns.org, for example.
+This produces a subdomain like grafna.your-home.duckdns.org, for example.
 
 ## Dependencies
 
