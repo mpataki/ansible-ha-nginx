@@ -8,6 +8,12 @@ server {
 
     location / {
         proxy_pass http://{{ item.host }}:{{ item.port }}/;
+
+        {% if item.allowed_cidr is defined %}
+        allow {{ item.allowed_cidr }};
+        allow 127.0.0.1;
+        deny all;
+        {% endif %}
     }
 }
 

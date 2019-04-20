@@ -13,7 +13,9 @@ Really this should work on any debian based system, but has been tested on a Ras
 - `domain_name`
   - Ex. `my_home.duckdns.org`
   - This is the domain name where your pi can be reached from the internet.
-- `proxies` is a list of objects following the form below, each of which describe subdomain configuration. In addition, nginx will handle SSL termination and redirection from http to https.
+- `proxies` is a list of objects following the form below, each of which describe subdomain configuration.
+  - In addition, nginx will handle SSL termination and redirection from http to https.
+  - The optional `allowed_cidr` key will make nginx enforce that traffic to this subdomain must come from the provided cidr block. The example below only allows the subdomain to be accessed from the local network.
 
 Ex:
 ```yaml
@@ -21,6 +23,7 @@ proxies:
   - subdomain: grafana
     host: localhost
     port: 3000
+    allowed_cidr: 192.168.1.0/24 # optional
 ```
 
 This product a subdomain like grafna.your-home.duckdns.org, for example.

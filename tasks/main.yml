@@ -33,7 +33,7 @@
   become: true
   notify: restart nginx
 
-- name: add extra servers
+- name: add subdomain proxies
   template:
     src: templates/proxy
     dest: "/etc/nginx/sites-enabled/{{ item.subdomain }}"
