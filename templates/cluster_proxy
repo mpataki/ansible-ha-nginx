@@ -1,0 +1,22 @@
+
+upstream {{ item.subdomain }} {
+  {% for host in item.hosts %}
+    server {{ host }}:{{ item.port }};
+  {% endfor %}
+}
+
+server {
+    listen       80;
+    server_name  {{ item.subdomain }}.{{ domain_name }};
+
+    location / {
+        proxy_pass http://{{ item.subdomain }};
+
+        {% if item.allowed_cidr is defined %}
+          allow {{ item.allowed_cidr }};
+          allow 127.0.0.1;
+          deny all;
+        {% endif %}
+    }
+}
+

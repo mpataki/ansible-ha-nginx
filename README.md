@@ -16,6 +16,8 @@ Really this should work on any debian based system, but has been tested on a Ras
 - `proxies` is a list of objects following the form below, each of which describe subdomain configuration.
   - In addition, nginx will handle SSL termination and redirection from http to https.
   - The optional `allowed_cidr` key will make nginx enforce that traffic to this subdomain must come from the provided cidr block. The example below only allows the subdomain to be accessed from the local network.
+- `cluster-proxies`
+  - This follows the same symantics as `proxies` but is extended to handle load balancing and health checks. Find an example below.
 
 Ex:
 ```yaml
@@ -27,6 +29,23 @@ proxies:
 ```
 
 This produces a subdomain like grafna.your-home.duckdns.org, for example.
+
+### Cluster proxies
+
+If you're like me and you're running a compute cluster in your house, then then simple `poxies` object above might not be enough to accomodate the ephemeral nature of containers. For this reason there also exists a `cluster-proxies` object, which sets up a subdomain with multiple upstreams that nginx will health check and load balance between.
+
+Ex:
+```yaml
+cluster-proxies:
+  - subdomain: tasmota
+    hosts:
+      - 192.168.1.0
+      - 192.168.1.1
+      - 192.168.1.2
+    port: 30001
+```
+
+Here, the `port` is assumed to be exposed on all of the `servers`.
 
 ## Dependencies
 
