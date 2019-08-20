@@ -43,6 +43,17 @@
   become: true
   notify: restart nginx
 
+- name: copy any custom sites
+  copy:
+    src: "{{ nginx_config_dir }}/"
+    dest: /etc/nginx/sites-enabled/
+    directory_mode: true
+    owner: root
+    group: root
+  become: true
+  when: nginx_config_dir is defined
+  notify: restart nginx
+
 - name: nginx service
   service:
     name: nginx
