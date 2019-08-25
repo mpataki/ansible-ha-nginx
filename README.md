@@ -17,6 +17,7 @@ Really this should work on any debian based system, but has been tested on a Ras
   - In addition, nginx will handle SSL termination and redirection from http to https.
   - The optional `allowed_cidr` key will make nginx enforce that traffic to this subdomain must come from the provided cidr block. The example below only allows the subdomain to be accessed from the local network.
 - `nginx_config_dir` is a local directory where any custom sites file that you want copied to nginx's sites-enabled will be sourced from.
+- `nginx_streams_config_dir` is a local directory where any custom stream comfigs (TCP or UDP proxies, for example) that you want nginx to include will be sourced from.
 
 Ex:
 ```yaml

@@ -54,6 +54,17 @@
   when: nginx_config_dir is defined
   notify: restart nginx
 
+- name: copy stream configs
+  copy:
+    src: "{{ nginx_streams_config_dir }}/"
+    dest: /etc/nginx/streams/
+    directory_mode: true
+    owner: root
+    group: root
+  become: true
+  when: nginx_streams_config_dir is defined
+  notify: restart nginx
+
 - name: nginx service
   service:
     name: nginx
