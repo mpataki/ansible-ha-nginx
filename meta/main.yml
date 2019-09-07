@@ -14,6 +14,3 @@ galaxy_info:
   galaxy_tags:
     - homeassistant
 
-dependencies:
-  - name: mpataki.ha_letsencrypt
-    version: master

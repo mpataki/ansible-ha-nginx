@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mpataki/ansible-ha-nginx.svg?branch=master)](https://travis-ci.org/mpataki/ansible-ha-nginx)
 
-This ansible role sets up a [nginx](https://www.nginx.com/) server to reverse proxy the home assistant web UI's HTTP and Websocket ports. It assumes you've set up [let's encrypt](https://github.com/mpataki/ansible-ha-letsencrypt) for SSL encryption and will handle HTTP -> HTTPS redirects.
+This ansible role sets up a [nginx](https://www.nginx.com/) server to reverse proxy the home assistant web UI's HTTP and Websocket ports. It assumes you've set up [let's encrypt](https://github.com/mpataki/ansible-ha-letsencrypt) for SSL encryption and will handle HTTP -> HTTPS redirects. This can be done via the mpataki.ha_lets_encrypt role if you'd like.
 
 ## Requirements
 
@@ -29,10 +29,6 @@ proxies:
 ```
 
 This produces a subdomain like grafna.your-home.duckdns.org, for example.
-
-## Dependencies
-
-- [ha-letsencrypt](https://github.com/mpataki/ansible-ha-letsencrypt) for SSL. This can be installed via git or via ansible galaxy.
 
 ## Example Playbook
 
