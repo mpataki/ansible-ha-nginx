@@ -3,8 +3,8 @@ server {
     server_name  {{ server_name | default(domain_name) }};
 
     ssl on;
-    ssl_certificate /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/{{ domain_name }}/privkey.pem;
+    ssl_certificate /home/pi/.acme.sh/{{ domain_name }}/fullchain.cer;
+    ssl_certificate_key /home/pi/.acme.sh/{{ domain_name }}/{{ domain_name }}.key;
 
     location / {
         proxy_pass http://{{ downstream_server | default('localhost') }}:{{ downstream_port | default('8123') }}/;
